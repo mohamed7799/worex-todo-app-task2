@@ -4,6 +4,7 @@ import { TODOS_CONTEXT } from "../context/todos_context";
 import { TASK_CONTEXT } from "../context/task_context";
 import { useContext } from "react";
 import { EDITMODE_CONTEXT } from "../context/editMode_context";
+import { nanoid } from "nanoid";
 const InputField = () => {
   const { task, setTask } = useContext(TASK_CONTEXT);
   const { todos, setTodos } = useContext(TODOS_CONTEXT);
@@ -16,7 +17,7 @@ const InputField = () => {
         setTodos(
           todos.map((item) => {
             if (item.id === task.id) {
-              return { text: task.text, ...task };
+              return { ...task, text: task.text };
             } else {
               return item;
             }
@@ -24,7 +25,7 @@ const InputField = () => {
         );
         setEditMode(false);
       }
-      setTask({ text: "", completed: false, id: Math.random() });
+      setTask({ text: "", completed: false, id: nanoid() });
     } else {
       alert("Please enter a task");
     }

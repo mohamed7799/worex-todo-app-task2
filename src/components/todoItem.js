@@ -12,7 +12,7 @@ const TodoItem = ({ taskItem }) => {
     setTodos(
       todos.map((item) => {
         if (item.text === taskItem.text) {
-          return { text: taskItem.text, completed: !taskItem.completed };
+          return { ...taskItem, completed: !taskItem.completed };
         } else {
           return item;
         }
