@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/header";
+import InputField from "./components/inputField";
+import TodoContainer from "./components/todoContainer";
+import TodoList from "./components/todoList";
+import { EDITMODE_CONTEXT_PROVIDER } from "./context/editMode_context";
+import { TASK_CONTEXT_PROVIDER } from "./context/task_context";
+import { TODOS_CONTEXT_PROVIDER } from "./context/todos_context";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="min-h-screen flex items-baseline justify-center">
+      <EDITMODE_CONTEXT_PROVIDER>
+        <TASK_CONTEXT_PROVIDER>
+          <TODOS_CONTEXT_PROVIDER>
+            <TodoContainer>
+              <Header></Header>
+              <InputField></InputField>
+              <TodoList></TodoList>
+            </TodoContainer>
+          </TODOS_CONTEXT_PROVIDER>
+        </TASK_CONTEXT_PROVIDER>
+      </EDITMODE_CONTEXT_PROVIDER>
+    </main>
   );
-}
+};
 
 export default App;
