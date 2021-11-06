@@ -5,9 +5,12 @@ import { TASK_CONTEXT } from "../context/task_context";
 import { EDITMODE_CONTEXT } from "../context/editMode_context";
 import { useContext } from "react";
 const TodoItem = ({ taskItem }) => {
+  //variables
   const { todos, setTodos } = useContext(TODOS_CONTEXT);
   const { setTask } = useContext(TASK_CONTEXT);
   const { setEditMode } = useContext(EDITMODE_CONTEXT);
+
+  //functions
   const toggleCompletion = () => {
     setTodos(
       todos.map((item) => {

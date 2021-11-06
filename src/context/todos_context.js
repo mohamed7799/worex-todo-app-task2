@@ -7,8 +7,10 @@ let defaultTodos = localStorage.getItem("todos")
   : [];
 
 export const TODOS_CONTEXT_PROVIDER = ({ children }) => {
+  //variables
   const [todos, setTodos] = useState(defaultTodos);
 
+  //functions
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);

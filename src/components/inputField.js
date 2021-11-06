@@ -6,9 +6,12 @@ import { useContext } from "react";
 import { EDITMODE_CONTEXT } from "../context/editMode_context";
 import { nanoid } from "nanoid";
 const InputField = () => {
+  //variables
   const { task, setTask } = useContext(TASK_CONTEXT);
   const { todos, setTodos } = useContext(TODOS_CONTEXT);
   const { editMode, setEditMode } = useContext(EDITMODE_CONTEXT);
+
+  //functions
   const addTask = () => {
     if (task) {
       if (!editMode) {
